@@ -16,7 +16,7 @@ args = parser.parse_args()
 args.seq = args.seq.upper()
 #define  type of sequence
 if re.search('^[ACGTU]+$', args.seq):
-    if re.search('T*U|U*T', args.seq):
+    if re.search('T*U|U*T', args.seq): #if there are both T and U print that there are both
         print('The sequence contains T and U')
     else:
         if re.search('T', args.seq):
