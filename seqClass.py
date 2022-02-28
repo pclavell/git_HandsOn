@@ -13,17 +13,18 @@ if len(sys.argv) == 1:
 
 args = parser.parse_args()
 #make upper case
-args.seq = args.seq.upper() 
+args.seq = args.seq.upper()
 #define  type of sequence
 if re.search('^[ACGTU]+$', args.seq):
-    if re.search('T', args.seq):
-        print ('The sequence is DNA')
-    elif re.search('U', args.seq):
-        print ('The sequence is RNA')
+    if re.search('T*U|U*T', args.seq):
+        print('The sequence contains T and U')
     else:
-        print ('The sequence can be DNA or RNA')
-else:
-    print ('The sequence is not DNA nor RNA')
+        if re.search('T', args.seq):
+            print ('The sequence is DNA')
+        elif re.search('U', args.seq):
+            print ('The sequence is RNA')
+        else:
+            print ('The sequence is not DNA nor RNA')
 #look for motive
 if args.motif:
     args.motif = args.motif.upper()
@@ -32,3 +33,4 @@ if args.motif:
         print("Yes, it exists")
     else:
         print("not fouuund")
+            
